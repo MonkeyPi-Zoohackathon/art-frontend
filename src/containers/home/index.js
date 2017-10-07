@@ -39,7 +39,7 @@ class Home extends React.Component {
           </Col>
         </Row>
         <Row className='show-grid'>
-          <Col xs={8}>
+          <Col xs={6}>
             {this.props.alerts.map((alert) =>
               <Alert
                 alertObj={alert}
@@ -47,9 +47,16 @@ class Home extends React.Component {
               />
             )}
           </Col>
-          <Col xs={4}>
+          <Col xs={6}>
             <div style={mapStyles}>
-              <p>Map goes here</p>
+              <iframe
+                title='Map'
+                src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31884.361019236538!2d37.24325773691526!3d-2.6520156980678147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x18309e7455555555%3A0x8405eed269adf949!2sAmboseli+National+Park!5e0!3m2!1sen!2suk!4v1507408546345'
+                width='600'
+                height='450'
+                frameborder='0'
+                style={mapStyles}
+              />
             </div>
           </Col>
         </Row>
