@@ -7,7 +7,6 @@ import rootReducer from './reducers'
 import { rootSaga } from './sagas'
 
 const sagaMiddleware = createSagaMiddleware()
-// const action = type => store.dispatch({type})
 
 export const history = createHistory()
 
