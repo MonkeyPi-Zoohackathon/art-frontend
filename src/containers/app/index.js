@@ -11,8 +11,20 @@ import {
 import Home from '../home'
 import About from '../about'
 
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.min.css'
+
 const App = () => (
   <Grid>
+    <ToastContainer
+      position='top-right'
+      type='default'
+      autoClose={5000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      pauseOnHover
+    />
     <Row className='show-grid'>
       <Col xs={12}>
         <Navbar>

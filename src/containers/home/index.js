@@ -8,6 +8,7 @@ import {
   Col
 } from 'react-bootstrap'
 import Alert from '../../components/alert'
+import ToneListener from '../../components/toneListener'
 import { sayAlert, addAlert } from '../../actions/alertsActions'
 import Websocket from 'react-websocket'
 
@@ -33,6 +34,7 @@ class Home extends React.Component {
   render () {
     return (
       <Grid>
+        <ToneListener />
         <Row className='show-grid'>
           <Col xs={12}>
             <h1>Alerts</h1>
