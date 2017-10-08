@@ -9,7 +9,11 @@ import {
 } from 'react-bootstrap'
 import Alert from '../../components/alert'
 import ToneListener from '../../components/toneListener'
-import { sayAlert, addAlert } from '../../actions/alertsActions'
+import {
+  sayAlert,
+  addAlert,
+  respondToAlert
+} from '../../actions/alertsActions'
 import Websocket from 'react-websocket'
 
 const mapStyles = {
@@ -34,7 +38,7 @@ class Home extends React.Component {
   render () {
     return (
       <Grid>
-        <ToneListener />
+        <ToneListener respondToAlert={this.props.respondToAlert} />
         <Row className='show-grid'>
           <Col xs={12}>
             <h1>Alerts</h1>
@@ -79,7 +83,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => bindActionCreators({
   changePage: () => push('/about-us'),
   sayAlert: (speech) => sayAlert(speech),
-  addAlert: (alertObj) => addAlert(alertObj)
+  addAlert: (alertObj) => addAlert(alertObj),
+  respondToAlert: (ranger, intent) => respondToAlert(ranger, intent)
 }, dispatch)
 
 export default connect(

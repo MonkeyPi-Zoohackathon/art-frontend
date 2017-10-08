@@ -6,7 +6,12 @@ class ToneListener extends React.Component {
   constructor () {
     super()
 
+    this.state = {
+      lastTone: ''
+    }
+
     this.listenForTone = this.listenForTone.bind(this)
+    this.checkTone = this.checkTone.bind(this)
 
     if (!navigator.getUserMedia) navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia
 
@@ -36,9 +41,9 @@ class ToneListener extends React.Component {
         return !Goertzel.Utilities.doublePeakFilter(e.energies['high'], e.energies['low'], 1.4)
       }
     })
-    dtmf.on('decode', function (value) {
+    dtmf.on('decode', value => {
       if (value != null) {
-        console.log(value)
+        this.checkTone(value)
       }
     })
     recorder.onaudioprocess = function (e) {
@@ -46,7 +51,35 @@ class ToneListener extends React.Component {
       dtmf.processBuffer(buffer)
     }
     volume.connect(recorder)
-    recorder.connect(context.destination) 
+    recorder.connect(context.destination)
+  }
+
+  checkTone (tone) {
+    if (tone === this.state.lastTone) {
+      switch (tone) {
+        case '1':
+          this.props.respondToAlert('Ranger 1', 'Will investigate')
+          break
+        case '2':
+          this.props.respondToAlert('Ranger 1', 'Will not investigate')
+          break
+        case '3':
+          this.props.respondToAlert('Ranger 1', 'Resolved issue')
+          break
+        case '7':
+          this.props.respondToAlert('Ranger 3', 'Will investigate')
+          break
+        case '8':
+          this.props.respondToAlert('Ranger 3', 'Will not investigate')
+          break
+        case '9':
+          this.props.respondToAlert('Ranger 3', 'Resolved issue')
+          break
+        default:
+          break
+      }
+    }
+    this.setState({lastTone: tone})
   }
 
   render () {

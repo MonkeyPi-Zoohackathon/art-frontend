@@ -1,5 +1,6 @@
 export const SAY_ALERT = 'SAY_ALERT'
 export const ADD_ALERT = 'ADD_ALERT'
+export const RESPOND_TO_ALERT = 'RESPOND_TO_ALERT'
 
 export const sayAlert = speech => ({
   type: SAY_ALERT,
@@ -20,3 +21,12 @@ export const addAlert = ({
   context,
   audioMessage
 })
+
+export const respondToAlert = (ranger, intent) => {
+  console.log(ranger, intent)
+  return ({
+    type: RESPOND_TO_ALERT,
+    ranger,
+    intent
+  })
+}
