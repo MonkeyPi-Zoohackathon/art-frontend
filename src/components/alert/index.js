@@ -6,7 +6,7 @@ class Alert extends React.Component {
   }
   render () {
     return (
-      <div>
+      <div className='Alert'>
         <p style={{textAlign: 'right'}}>{this.props.alertObj.time}</p>
         <p><strong>{this.props.alertObj.alertType}</strong> {this.props.alertObj.context}</p>
         <p>{this.props.alertObj.location}</p>

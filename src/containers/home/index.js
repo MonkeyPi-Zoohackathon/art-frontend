@@ -15,11 +15,17 @@ import {
   respondToAlert
 } from '../../actions/alertsActions'
 import Websocket from 'react-websocket'
+import mapImage from './map.png'
 
 const mapStyles = {
   width: '100%',
   height: '500px',
-  backgroundColor: '#eee'
+  backgroundColor: '#eee',
+  overflow: 'hidden'
+}
+const mapImgStyles = {
+  height: '100%',
+  right: '0'
 }
 
 class Home extends React.Component {
@@ -46,6 +52,26 @@ class Home extends React.Component {
         </Row>
         <Row className='show-grid'>
           <Col xs={6}>
+            {/*<Alert
+              alertObj={{
+                alertType: 'CAMERA ALERT',
+                time: ' 0545 UTC  09/10/2017',
+                location: '-2.987131202876079 38.265728355667996',
+                context: ' LABELLED AS "FALSE TRIGGER"',
+                audioMessage: 'ALERT ALERT ALERT'
+              }}
+              sayAlert={this.props.sayAlert}
+            />
+            <Alert
+              alertObj={{
+                alertType: 'CAMERA ALERT',
+                time: ' 0545 UTC  09/10/2017',
+                location: '-2.987131202876079 38.265728355667996',
+                context: ' LABELLED AS "FALSE TRIGGER"',
+                audioMessage: 'ALERT ALERT ALERT'
+              }}
+              sayAlert={this.props.sayAlert}
+            />*/}
             {this.props.alerts.map((alert) =>
               <Alert
                 alertObj={alert}
@@ -55,19 +81,12 @@ class Home extends React.Component {
           </Col>
           <Col xs={6}>
             <div style={mapStyles}>
-              <iframe
-                title='Map'
-                src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31884.361019236538!2d37.24325773691526!3d-2.6520156980678147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x18309e7455555555%3A0x8405eed269adf949!2sAmboseli+National+Park!5e0!3m2!1sen!2suk!4v1507408546345'
-                width='600'
-                height='450'
-                frameborder='0'
-                style={mapStyles}
-              />
+              <img src={mapImage} style={mapImgStyles} alt='Map' />
             </div>
           </Col>
         </Row>
         <Websocket
-          url='ws://172.16.0.67:9998'
+          url='ws://172.16.0.50:9998'
           onMessage={this.handleData.bind(this)}
           debug
         />

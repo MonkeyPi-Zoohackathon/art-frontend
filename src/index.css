@@ -3,3 +3,11 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.Alert {
+  margin: 10px !important;
+}
+
+.Alert:last-child {
+  background-color: rgba(255, 255, 255, 0.1);
+}

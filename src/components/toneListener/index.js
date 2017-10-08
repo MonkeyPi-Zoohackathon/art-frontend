@@ -55,25 +55,34 @@ class ToneListener extends React.Component {
   }
 
   checkTone (tone) {
-    if (tone === this.state.lastTone) {
+    if (this.state.lastTone === '0') {
       switch (tone) {
         case '1':
-          this.props.respondToAlert('Ranger 1', 'Will investigate')
+          this.props.respondToAlert('Ranger 1', 'will investigate')
           break
         case '2':
-          this.props.respondToAlert('Ranger 1', 'Will not investigate')
+          this.props.respondToAlert('Ranger 1', 'will not investigate')
           break
         case '3':
-          this.props.respondToAlert('Ranger 1', 'Resolved issue')
+          this.props.respondToAlert('Ranger 1', 'has resolved')
+          break
+        case '4':
+          this.props.respondToAlert('Ranger 2', 'will investigate')
+          break
+        case '5':
+          this.props.respondToAlert('Ranger 2', 'will not investigate')
+          break
+        case '6':
+          this.props.respondToAlert('Ranger 2', 'has resolved')
           break
         case '7':
-          this.props.respondToAlert('Ranger 3', 'Will investigate')
+          this.props.respondToAlert('Ranger 3', 'will investigate')
           break
         case '8':
-          this.props.respondToAlert('Ranger 3', 'Will not investigate')
+          this.props.respondToAlert('Ranger 3', 'will not investigate')
           break
         case '9':
-          this.props.respondToAlert('Ranger 3', 'Resolved issue')
+          this.props.respondToAlert('Ranger 3', 'has resolved')
           break
         default:
           break
