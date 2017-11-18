@@ -86,7 +86,7 @@ class Home extends React.Component {
           </Col>
         </Row>
         <Websocket
-          url='ws://172.16.0.50:9998'
+          url='ws://0.0.0.0:9998'
           onMessage={this.handleData.bind(this)}
           debug
         />
